@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../dados/preferencias.dart';
 import 'tela_habitos.dart';
 
 class TelaPrincipal extends StatefulWidget {
@@ -10,6 +11,14 @@ class TelaPrincipal extends StatefulWidget {
 
 class _TelaPrincipalState extends State<TelaPrincipal> {
   int indiceAtual = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    lerUltimaAba().then((indice) {
+      if (mounted) setState(() => indiceAtual = indice);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +36,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
           setState(() {
             indiceAtual = indice;
           });
+          salvarUltimaAba(indice);
         },
         items: const [
           BottomNavigationBarItem(
