@@ -9,9 +9,10 @@ class Nome {
     required this.ranking,
   });
 
-  factory Nome.fromJson(Map<String, dynamic> m) => Nome(
-        nome: m['nome'] as String,
-        frequencia: m['frequencia'] as int,
-        ranking: m['ranking'] as int,
+  // À esquerda os nomes do app, entre aspas os nomes que o IBGE manda.
+  factory Nome.fromMap(Map<String, Object?> m) => Nome(
+        nome: m['nome'] as String? ?? '(sem nome)',
+        frequencia: m['frequencia'] as int? ?? 0,
+        ranking: m['ranking'] as int? ?? 0,
       );
 }

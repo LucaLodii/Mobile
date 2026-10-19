@@ -10,7 +10,7 @@ void main() {
 
   runApp(
     ChangeNotifierProvider(
-      create: (_) => NomesStore(api)..carregar(),
+      create: (_) => NomesStore(api),
       child: const MeuApp(),
     ),
   );
